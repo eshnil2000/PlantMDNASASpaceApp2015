@@ -1,0 +1,42 @@
+<div class="modal" style="overflow: hidden">
+    <ion-header-bar>
+
+        <div class="buttons">
+            <h1 class="title">Add Location</h1>
+            <button class="button button-clear" ng-click="leaveAddChangeDialog()">Close</button>
+
+        </div>
+    </ion-header-bar>
+
+    <ion-content >
+
+        <form name="form" ng-model="form">
+            <!--img ng-src="{{message.image}}"-->
+
+            <ion-list>
+
+                <div >
+                    <label for="Autocomplete">Generic Autocomplete</label>
+                    <input type="text" id="Autocomplete" class="form-control" ng-autocomplete ng-model="result1" />
+                </div>
+                <div>result: {{result1}}</div>
+
+
+
+                <ion-button ng-show="action == 'add'" ng-init="saveEmpty(form)" class="button button-block button-positive" ng-click="codeAddress()">
+                    Add
+                </ion-button>
+                <ion-button ng-show="action == 'change'" class="button button-block button-positive" ng-click="editItem(form)">
+                    Edit
+                </ion-button>
+
+            </ion-list>
+
+
+
+
+        </form>
+    </ion-content>
+
+</div>
+

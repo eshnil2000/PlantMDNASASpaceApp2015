@@ -1,0 +1,44 @@
+/* Empty. Add your own CSS if you like */
+/*Full screen modal dialog box */
+.modal{
+    top: 0 ;
+    bottom: 0 ;
+    left: 0 ;
+    right: 0 ;
+    width: 100% ;
+}
+/* Hidden file input */
+input[type=file]{
+    height:0;
+    overflow:auto;
+}
+/*Spinner*/
+#spin {
+    height: 60px;
+}
+
+.btn-auth{
+    display:block;
+    clear:both;
+    width:80%;
+    margin:15px auto;
+}
+#map-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.scroll {
+    height: 100%;
+}
+
+#panel {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    margin-left: -180px;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
+}

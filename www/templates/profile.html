@@ -1,0 +1,31 @@
+<ion-view title="Welcome test">
+    <ion-header-bar>
+
+
+        <ion-nav-buttons side="left">
+            <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+        </ion-nav-buttons>
+
+        <ion-nav-buttons side="right" >
+
+            <button ng-click="showAddChangeDialog('add')"> Add</button>
+        </ion-nav-buttons>
+
+
+
+    </ion-header-bar>
+
+    <ion-content has-header="true" padding="true">
+        <h4 ng-model="userData.displayName">Welcome, {{userData.displayName}}</h4>
+
+
+
+        <div ng-switch="userData.provider">
+            <img ng-switch-when="facebook" ng-src="{{userData.thirdPartyUserData.picture.data.url}}"/>
+            <img ng-switch-when="google" ng-src="{{userData.thirdPartyUserData.picture}}" height="100" width="100"/>
+            <img ng-switch-when="twitter" ng-src="{{userData.thirdPartyUserData.profile_image_url}}"/>
+        </div>
+
+    </ion-content>
+</ion-view>
+</ion-view>
