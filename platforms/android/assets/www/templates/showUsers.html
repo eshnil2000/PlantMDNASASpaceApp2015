@@ -1,0 +1,31 @@
+<!--
+  This template loads for the 'ListExample' state (app.js)
+-->
+<ion-view title="Users ">
+<ion-header-bar>
+
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+
+
+</ion-header-bar>
+<ion-content has-header="true">
+
+
+    <ion-list option-buttons="itemButtons" can-swipe="true">
+        <label class="item item-divider">
+            List
+        </label>
+
+        <!--  -->
+        <ion-item  ng-repeat="item in userList" item="item" item-type="item item-icon-left" ng-click="makeDefault(item)" ng-tap="makeDefault(item)">
+            <i ng-if="item.uName" class="icon ion-checkmark"></i>
+            {{ item.uName }}
+
+        </ion-item>
+    </ion-list>
+</ion-content>
+
+</ion-view>

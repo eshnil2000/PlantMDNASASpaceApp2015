@@ -1,0 +1,27 @@
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/classes.dex : \
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/classes/com/ionic/keyboard/IonicKeyboard$1.class \
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/classes/com/ionic/keyboard/IonicKeyboard$2.class \
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/classes/com/ionic/keyboard/IonicKeyboard.class \
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/classes/com/ionicframework/myapp965889/BuildConfig.class \
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/classes/com/ionicframework/myapp965889/myApp.class \
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/classes/com/ionicframework/myapp965889/R$attr.class \
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/classes/com/ionicframework/myapp965889/R$drawable.class \
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/classes/com/ionicframework/myapp965889/R$string.class \
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/classes/com/ionicframework/myapp965889/R$xml.class \
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/classes/com/ionicframework/myapp965889/R.class \
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/classes/org/apache/cordova/device/Device.class \
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$1.class \
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$2.class \
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$3.class \
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$4$1.class \
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$4.class \
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$5$1.class \
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$5$2.class \
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$5$3.class \
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$5$4.class \
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$5.class \
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$InAppBrowserClient.class \
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser.class \
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowserDialog.class \
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppChromeClient.class \
+/Users/nik/IONIC/myApp3/platforms/android/ant-build/dexedLibs/classes-f91c897bfec88d2cdea1bd986e94d2c6.jar \

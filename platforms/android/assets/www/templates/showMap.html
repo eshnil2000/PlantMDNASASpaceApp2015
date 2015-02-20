@@ -1,0 +1,43 @@
+<!--
+  This template loads for the 'ListExample' state (app.js)
+-->
+<ion-view title="Map " >
+<ion-header-bar>
+
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=yes, width=device-width">
+
+    <ion-nav-buttons side="right" >
+        <!--i class="icon ion-ios7-plus-outline"></i-->
+        <button ng-click="showLocation()"> Add Location</button>
+    </ion-nav-buttons>
+
+
+</ion-header-bar>
+<ion-content  scroll="false"  class="ng-scope ng-binding" >
+    <!-- MAP -->
+    <div ng-model="radiusNew">
+        Radius : {{radiusNew}} miles
+    </div>
+
+    <input id="pac-input"   type="text"
+           placeholder="Enter a location" position="relative" ng-autocomplete>
+
+    <map position="relative" id="map-canvas" zoom="15" center={{center}} on-click="setCenter(event)"  on-zoom_changed="zoomChanged()" >
+        <!--shape name="rectangle" editable="true" draggable="true" bounds="[[44.490,-78.649],[44.599,-78.443]]" on-bounds_changed="boundsChanged()"-->
+
+        <shape id="circle" name="circle" stroke-color='#FF0000'
+               stroke-opacity="0.8"stroke-weig1t="2"
+               center= "{{center}}" radius="{{radiusInM}}" editable="true"  on-bounds_changed="boundsChanged()" ></shape>
+
+    </map>
+
+
+
+</ion-content>
+
+</ion-view>
+
+

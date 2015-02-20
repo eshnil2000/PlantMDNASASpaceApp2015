@@ -1,7 +1,7 @@
 angular.module('starter.controllers', [])
     //Make sure the ORDER of dependencies injected and the parameters passed to function are the same order.
     //Ex. ['$scope','FIREBASE_REF',...], function($scope,FIREBASE_REF,..)
-    .controller('IntroCtrl', function($scope, $state, $ionicSlideBoxDelegate) {
+        .controller('IntroCtrl', function($scope, $state, $ionicSlideBoxDelegate) {
 
         // Called to navigate to the main app
         $scope.startApp = function() {
@@ -20,7 +20,12 @@ angular.module('starter.controllers', [])
         };
     })
 
-    .controller('AppCtrl', ['$q','$localstorage','storeChoreService','SharedData','$scope','FIREBASE_REF','$firebaseSimpleLogin','userSession','$rootScope','$state','$ionicModal',function($q,$localstorage,storeChoreService,SharedData,$scope,FIREBASE_REF,$firebaseSimpleLogin,userSession,$rootScope,$state,$ionicModal){
+    .controller('AppCtrl', ['$q','$localstorage','SharedData','$scope','FIREBASE_REF','$firebaseSimpleLogin','userSession','$rootScope','$state','$ionicModal',function($q,$localstorage,SharedData,$scope,FIREBASE_REF,$firebaseSimpleLogin,userSession,$rootScope,$state,$ionicModal){
+
+        $scope.showMap2= function(form) {
+            $state.go('app.showMap2');
+
+        };
 
         $scope.showIntro= function(form) {
             $state.go('app.intro');
@@ -48,6 +53,19 @@ angular.module('starter.controllers', [])
         };
 
         SharedData.set(new Firebase(FIREBASE_REF));
+
+        console.log(SharedData.get());
+        $localstorage.setObject('SharedData',new Firebase(FIREBASE_REF));
+        var deferred=$q.defer();
+        var promise=deferred.promise;
+
+        promise.then(function(result) {
+            console.log(result);
+        })
+        deferred.resolve($localstorage.getObject('SharedData'));
+
+
+
         userSession.auth=$firebaseSimpleLogin(SharedData.get());
         $scope.loggedIn=0;
 
@@ -176,7 +194,7 @@ angular.module('starter.controllers', [])
 
 
 
-    .controller('choreCtrl', ['$localstorage','storeChoreService','$q','SharedData','$ionicModal','$scope','FIREBASE_REF','$firebaseSimpleLogin','userSession','$rootScope','$state',function($localstorage,storeChoreService,$q,SharedData,$ionicModal,$scope,FIREBASE_REF,$firebaseSimpleLogin,userSession,$rootScope,$state){
+    .controller('choreCtrl', ['$localstorage','$q','SharedData','$ionicModal','$scope','FIREBASE_REF','$firebaseSimpleLogin','userSession','$rootScope','$state',function($localstorage,$q,SharedData,$ionicModal,$scope,FIREBASE_REF,$firebaseSimpleLogin,userSession,$rootScope,$state){
         $rootScope.$on('loggedout', function(event, user) {
             setTimeout(function () {
                 $scope.$apply(function () {
@@ -261,20 +279,7 @@ angular.module('starter.controllers', [])
             }
         }; */
 
-        $rootScope.$on('choreEvent', function(storeChoreService) {
-            var deferred=$q.defer();
-            var promise=deferred.promise;
 
-            promise.then(function(result) {
-                //alert('Success' + result);
-                //$scope.choreVals = result;
-                //console.log(result);
-
-            }, function(reason){
-                alert('Error'+reason);
-
-            });
-        });
 
         $scope.choreNameChanged=function(val,old,scope){
             tempReward = val ;
@@ -473,7 +478,42 @@ angular.module('starter.controllers', [])
         }
     }])
 
-    .controller('profileCtrl',['$geofire','$ionicModal','$q','$localstorage','$scope','userSession','$rootScope',function($geofire,$ionicModal,$q,$localstorage,$scope,userSession,$rootScope){
+    .controller('profileCtrl',['$state','$geofire','$ionicModal','$q','$localstorage','$scope','userSession','$rootScope',function($state,$geofire,$ionicModal,$q,$localstorage,$scope,userSession,$rootScope){
+         $scope.userAddress=null;
+         $scope.userLocation=null;
+
+        /*$rootScope.$on('fetchUserAddress', function(event, user) {
+            console.log('event fired fetchUserAddress');
+
+            var deferred=$q.defer();
+            var promise=deferred.promise;
+
+            promise.then(function(result) {
+                $scope.myLocation=result;
+                console.log($scope.myLocation);
+            }, function(reason){
+                alert('Error'+reason);
+
+            });
+            deferred.resolve($localstorage.getObject('myLocation'));
+
+            var deferred2=$q.defer();
+            var promise2=deferred2.promise;
+
+            promise2.then(function(result) {
+                $scope.userAddress=result;
+                console.log($scope.userAddress);
+            }, function(reason){
+                alert('Error'+reason);
+
+            });
+            deferred2.resolve($localstorage.getObject('myAddress'));
+
+            //$scope.userAddress=$localstorage.getObject('myLocation');
+            //$scope.userLocation=$localstorage.getObject('myAddress');
+
+            //console.log(userLocation);
+        }) */
 
 
         $scope.leaveAddChangeDialog = function() {
@@ -505,7 +545,7 @@ angular.module('starter.controllers', [])
         ];
         var promises = fishLocations.map(function(location, index) {
             return $geo.$set("fish" + index, location).then(function() {
-                console.log("fish" + index + " initially set to [" + location + "]");
+                //console.log("fish" + index + " initially set to [" + location + "]");
             });
         });
 
@@ -605,7 +645,16 @@ angular.module('starter.controllers', [])
 
         $scope.showAddChangeDialog = function(action) {
             $scope.action = action;
+            $state.go('app.showMap');
+            /*
             $scope.addDialog.show();
+            var input = document.getElementById('pac-input'));
+
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            console.log(autocomplete); */
+
+
+
         };
 
         $scope.leaveAddChangeDialog = function() {
@@ -646,7 +695,7 @@ angular.module('starter.controllers', [])
 
     }])
 
-.controller('usersCtrl', ['$localstorage','storeChoreService','$q','SharedData','$ionicModal','$scope','FIREBASE_REF','$firebaseSimpleLogin','userSession','$rootScope','$state',function($localstorage,storeChoreService,$q,SharedData,$ionicModal,$scope,FIREBASE_REF,$firebaseSimpleLogin,userSession,$rootScope,$state) {
+.controller('usersCtrl', ['$localstorage','$q','SharedData','$ionicModal','$scope','FIREBASE_REF','$firebaseSimpleLogin','userSession','$rootScope','$state',function($localstorage,$q,SharedData,$ionicModal,$scope,FIREBASE_REF,$firebaseSimpleLogin,userSession,$rootScope,$state) {
         var deferred2=$q.defer();
         var promise2=deferred2.promise;
         $scope.userList=[];
@@ -673,9 +722,13 @@ angular.module('starter.controllers', [])
         deferred2.resolve(($localstorage.getObject('userList')));
     }])
 
-    .controller('mapCtrl', ['$location','$geofire','$q','$localstorage','storeChoreService','SharedData','$scope','FIREBASE_REF','$firebaseSimpleLogin','userSession','$rootScope','$state','$ionicModal',function($location,$geofire,$q,$localstorage,storeChoreService,SharedData,$scope,FIREBASE_REF,$firebaseSimpleLogin,userSession,$rootScope,$state,$ionicModal){
+    .controller('mapCtrl', ['$location','$geofire','$q','$localstorage','SharedData','$scope','FIREBASE_REF','$firebaseSimpleLogin','userSession','$rootScope','$state','$ionicModal',function($location,$geofire,$q,$localstorage,SharedData,$scope,FIREBASE_REF,$firebaseSimpleLogin,userSession,$rootScope,$state,$ionicModal){
         var map;
         var vehiclesInQuery = {};
+        var markerClusterer = null;
+        var markers = [];
+
+
 
 // Set the center as Firebase HQ
         var locations = {
@@ -695,13 +748,14 @@ angular.module('starter.controllers', [])
         //var geoFire= $geo;
          $scope.radiusInKm = 1;
         $scope.radiusInM=$scope.radiusInKm*1000;
+        $scope.radiusNew=$scope.radiusInKm;
 
 
         /*************/
         /*  GEOQUERY */
         /*************/
 // Keep track of all of the vehicles currently within the query
-        var vehiclesInQuery = {};
+
 
 // Create a new GeoQuery instance
         var geoQuery = $geo.$query({
@@ -718,17 +772,17 @@ angular.module('starter.controllers', [])
             //console.log('REGISTERED');
         });
         $scope.$on("KEY:ENTERED", function (event, key, location, distance) {
-            console.log('ENTERED');
+            //console.log('ENTERED');
             //vehicleId = key;
             //vehiclesInQuery[key] = location;
-                console.log(key+' :'+ location[0]+ ':'+ location[1]+ ':dist:'+distance);
+                //console.log(key+' :'+ location[0]+ ':'+ location[1]+ ':dist:'+distance);
             vehiclesInQuery[key] =createVehicleMarker(location);
         });$scope.$on("KEY:EXIT", function (event, key, location, distance) {
-            console.log('EXIT');
+            //console.log('EXIT');
             if(vehiclesInQuery[key]) {
                 vehiclesInQuery[key].setMap(null);
             }
-            console.log(key+' :'+ location[0]+ ':'+ location[1]);
+            //console.log(key+' :'+ location[0]+ ':'+ location[1]);
         });
 
 
@@ -736,24 +790,114 @@ angular.module('starter.controllers', [])
         /*  GOOGLE MAPS  */
         /*****************/
         /* Initializes Google Maps */
-        var map;
+
 
         $scope.$on('mapInitialized', function(evt, evtMap) {
+
+
             map = evtMap;
-
-
             //console.log(map);
+            var input = document.getElementById('pac-input');
+
+
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            var mapOptions = {
+                zoom: 4,
+                center: $scope.center,
+                mapTypeId: google.maps.MapTypeId.TERRAIN
+            };
+            //var map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
+            //console.log(map);
+            google.maps.event.addListener(autocomplete, 'place_changed', function() {
+                //console.log('place changed fired');
+                var deferred2=$q.defer();
+                var promise2=deferred2.promise;
+                //console.log(map.shapes);
+                //console.log(document.getElementById('pac-input').value);
+
+                //var oldCircle= new google.maps.Circle(document.getElementById("circle"));
+                //console.log("oroginal"+ oldCircle.getCenter());
+                promise2.then(function(result) {
+                    var place =result;
+                    //console.log('printing place');
+                    //console.log(place);
+                    //console.log(place.geometry);
+                    $localstorage.setObject('myLocation', place.geometry.location);
+                    console.log(place.geometry.location);
+                    var tmp= Object.keys(place.geometry.location).map(function (key) {return place.geometry.location[key]});
+                    console.log(tmp);
+
+                    $localstorage.setObject('myAddress', document.getElementById('pac-input').value);
+                    $rootScope.$broadcast('fetchUserAddress');
+                    map.setCenter(place.geometry.location);
+                        var circleOptions = {
+                            strokeColor: '#FF0000',
+                            strokeOpacity: 0.8,
+                            strokeWeight: 2,
+                            fillColor: '#FF0000',
+                            fillOpacity: 0.35,
+                            map: map,
+                            center: place.geometry.location,
+                            radius: 1
+                        };
+                        map.shapes.circle.setCenter(place.geometry.location);
+                        //(circleOptions);
+                        //console.log(place.geometry.location);
+                        $scope.center=place.geometry.location;
+                        //console.log(oldCircle.getCenter());
+
+
+
+                    /*
+                    // Add the circle for this city to the map.
+                    var cityCircle = new google.maps.Circle(circleOptions); */
+
+                    //console.log('printing cityCircle...');
+                    //console.log(cityCircle);
+                    //$scope.center = place.geometry.location;
+                    //map.setCenter(place.geometry.location);
+                    geoQuery.updateCriteria({
+                        center: [place.geometry.location.lat(), place.geometry.location.lng()],
+                        radius: $scope.radiusInKm
+                    });
+                })
+                deferred2.resolve(autocomplete.getPlace());
+
+                //var place = autocomplete.getPlace();
+
+            })
 
              $scope.boundsChanged=function (evt,evtMap){
 
                 var newLat=this.getCenter().lat();
                  var newLong=this.getCenter().lng();
                 var newRadius=this.getRadius();
-                 console.log('bounds changed: '+newLat + ' '+newLong+ " "+ newRadius);
+                 $scope.radiusNew=(newRadius/1000).toFixed(2);
+                 //console.log('bounds changed: '+newLat + ' '+newLong+ " "+ newRadius);
                  geoQuery.updateCriteria({
                      center: [newLat, newLong],
                      radius: newRadius/1000
                  });
+            }
+
+            $scope.saveLocation= function() {
+                var deferred = $q.defer();
+
+                var promise = deferred.promise;
+                promise.then(function (result) {
+                    result=Object.keys(result).map(function (key) {return result[key]});
+                    console.log(result);
+
+                    if (result) {
+                        $geo.$set(userSession.user.uid,result );
+                    }
+                    else {
+                        alert('no location');
+                    }
+
+                })
+                deferred.resolve($localstorage.getObject('myLocation'));
+
             }
     })
 
@@ -763,14 +907,16 @@ angular.module('starter.controllers', [])
         /**********************/
         /* Adds a marker for the inputted vehicle to the map */
         createVehicleMarker = function(location) {
-            console.log('creating marker');
+            //console.log('creating marker');
             var marker = new google.maps.Marker({
                 //icon: "https://chart.googleapis.com/chart?chst=d_bubble_icon_text_small&chld=" + vehicle.vtype + "|bbT|" + vehicle.routeTag + "|" + vehicleColor + "|eee",
                 position: new google.maps.LatLng(location[0],location[1]),
 
                 map: map
             });
-
+            markers.push(marker);
+            //console.log(markers);
+            //markerClusterer = new MarkerClusterer(map, markers);
             return marker;
         };
 
@@ -802,6 +948,42 @@ angular.module('starter.controllers', [])
                     var curLng = fromLng + (percent * lngDistance);
                     var pos = new google.maps.LatLng(curLat, curLng);
                     this.setPosition(pos);
+                    if (percent >= 1) {
+                        window.clearInterval(interval);
+                    }
+                }.bind(this), 50);
+            }
+        }
+
+        /* Animates the Marker class (based on https://stackoverflow.com/a/10906464) */
+        google.maps.Circle.prototype.animatedMoveTo = function(newLocation) {
+            var toLat = newLocation[0];
+            var toLng = newLocation[1];
+
+            var fromLat = this.getPosition().lat();
+            var fromLng = this.getPosition().lng();
+
+            if (!coordinatesAreEquivalent(fromLat, toLat) || !coordinatesAreEquivalent(fromLng, toLng)) {
+                var percent = 0;
+                var latDistance = toLat - fromLat;
+                var lngDistance = toLng - fromLng;
+                var interval = window.setInterval(function () {
+                    percent += 0.01;
+                    var curLat = fromLat + (percent * latDistance);
+                    var curLng = fromLng + (percent * lngDistance);
+                    var circleOptions = {
+                        strokeColor: '#FF0000',
+                        strokeOpacity: 0.8,
+                        strokeWeight: 2,
+                        fillColor: '#FF0000',
+                        fillOpacity: 0.35,
+                        map: map,
+                        center: newLocation,
+                        radius: 1,
+                        editable: true
+                    };
+                    var pos = new google.maps.Circle(circleOptions);
+                    this.setCenter(pos);
                     if (percent >= 1) {
                         window.clearInterval(interval);
                     }
@@ -811,167 +993,71 @@ angular.module('starter.controllers', [])
 
     }])
 
-//Working controller implementing geofire sfVehicles example
-    .controller('mapCtrlBackUp', ['$location','$geofire','$q','$localstorage','storeChoreService','SharedData','$scope','FIREBASE_REF','$firebaseSimpleLogin','userSession','$rootScope','$state','$ionicModal',function($location,$geofire,$q,$localstorage,storeChoreService,SharedData,$scope,FIREBASE_REF,$firebaseSimpleLogin,userSession,$rootScope,$state,$ionicModal){
-        var map;
+    .controller('locationCtrl',['$q','$localstorage','$rootScope','$geofire', function($q,$localstorage,$rootScope,$geofire){
+        var input = /** @type {HTMLInputElement} */(
+            document.getElementById('pac-input'));
+        //console.log(input);
 
-// Set the center as Firebase HQ
-        var locations = {
-            "FirebaseHQ": [37.785326, -122.405696],
-            "Caltrain": [37.7789, -122.3917]
-        };
-        //console.log(locations);
+        var autocomplete = new google.maps.places.Autocomplete(input);
+        google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            //console.log('place changed fired');
+            var deferred2=$q.defer();
+            var promise2=deferred2.promise;
+            //console.log(map.shapes);
+            //console.log(document.getElementById('pac-input').value);
 
-        var center = locations["FirebaseHQ"];
+            //var oldCircle= new google.maps.Circle(document.getElementById("circle"));
+            //console.log("oroginal"+ oldCircle.getCenter());
+            promise2.then(function(result) {
+                var place =result;
+                //console.log('printing place');
+                //console.log(place);
+                //console.log(place.geometry);
+                $localstorage.setObject('myLocation', place.geometry.location);
+                $localstorage.setObject('myAddress', document.getElementById('pac-input').value);
+                $rootScope.$broadcast('fetchUserAddress');
 
-// Query radius
-        var radiusInKm = 0.5;
+                /*
+                map.setCenter(place.geometry.location);
+                var circleOptions = {
+                    strokeColor: '#FF0000',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: '#FF0000',
+                    fillOpacity: 0.35,
+                    map: map,
+                    center: place.geometry.location,
+                    radius: 1
+                };
+                map.shapes.circle.setCenter(place.geometry.location);
+                //(circleOptions);
+                //console.log(place.geometry.location);
+                $scope.center=place.geometry.location;
 
-// Get a reference to the Firebase public transit open data set
-        var transitFirebaseRef = new Firebase("https://publicdata-transit.firebaseio.com/")
+                */
+                //console.log(oldCircle.getCenter());
 
-// Create a new GeoFire instance, pulling data from the public transit data
-        var geoFire = new GeoFire(transitFirebaseRef.child("_geofire"));
 
-        /*************/
-        /*  GEOQUERY */
-        /*************/
-// Keep track of all of the vehicles currently within the query
-        var vehiclesInQuery = {};
 
-// Create a new GeoQuery instance
-        var geoQuery = geoFire.query({
-            center: center,
-            radius: radiusInKm
-        });
+                /*
+                 // Add the circle for this city to the map.
+                 var cityCircle = new google.maps.Circle(circleOptions); */
 
-        /* Adds new vehicle markers to the map when they enter the query */
-        geoQuery.on("key_entered", function(vehicleId, vehicleLocation) {
-            // Specify that the vehicle has entered this query
-            //console.log(vehicleId);
-            vehicleId = vehicleId.split(":")[1];
-            vehiclesInQuery[vehicleId] = true;
+                //console.log('printing cityCircle...');
+                //console.log(cityCircle);
+                //$scope.center = place.geometry.location;
+                //map.setCenter(place.geometry.location);
+               /* geoQuery.updateCriteria({
+                    center: [place.geometry.location.lat(), place.geometry.location.lng()],
+                    radius: $scope.radiusInKm
+                }); */
 
-            // Look up the vehicle's data in the Transit Open Data Set
-            transitFirebaseRef.child("sf-muni/vehicles").child(vehicleId).once("value", function(dataSnapshot) {
-                // Get the vehicle data from the Open Data Set
-                vehicle = dataSnapshot.val();
+            })
+            deferred2.resolve(autocomplete.getPlace());
 
-                // If the vehicle has not already exited this query in the time it took to look up its data in the Open Data
-                // Set, add it to the map
-                if (vehicle !== null && vehiclesInQuery[vehicleId] === true) {
-                    // Add the vehicle to the list of vehicles in the query
-                    vehiclesInQuery[vehicleId] = vehicle;
+            //var place = autocomplete.getPlace();
 
-                    // Create a new marker for the vehicle
-                    vehicle.marker = createVehicleMarker(vehicle, getVehicleColor(vehicle));
-                }
-            });
-        });
-
-        /* Moves vehicles markers on the map when their location within the query changes */
-        geoQuery.on("key_moved", function(vehicleId, vehicleLocation) {
-            // Get the vehicle from the list of vehicles in the query
-            vehicleId = vehicleId.split(":")[1];
-            var vehicle = vehiclesInQuery[vehicleId];
-
-            // Animate the vehicle's marker
-            if (typeof vehicle !== "undefined" && typeof vehicle.marker !== "undefined") {
-                vehicle.marker.animatedMoveTo(vehicleLocation);
-            }
-        });
-
-        /* Removes vehicle markers from the map when they exit the query */
-        geoQuery.on("key_exited", function(vehicleId, vehicleLocation) {
-            // Get the vehicle from the list of vehicles in the query
-            vehicleId = vehicleId.split(":")[1];
-            var vehicle = vehiclesInQuery[vehicleId];
-
-            // If the vehicle's data has already been loaded from the Open Data Set, remove its marker from the map
-            if (vehicle !== true) {
-                vehicle.marker.setMap(null);
-            }
-
-            // Remove the vehicle from the list of vehicles in the query
-            delete vehiclesInQuery[vehicleId];
-        });
-
-        /*****************/
-        /*  GOOGLE MAPS  */
-        /*****************/
-        /* Initializes Google Maps */
-        var map;
-
-        $scope.$on('mapInitialized', function(evt, evtMap) {
-            map = evtMap;
-            //console.log(map);
-
-            $scope.boundsChanged=function (evt,evtMap){
-                //console.log(e.latLng);
-
-                var newLat=this.getCenter().lat();
-                console.log
-                var newLong=this.getCenter().lng();
-                var newRadius=this.getRadius();
-                console.log(newLat + ' '+newLong+ " "+ newRadius);
-                geoQuery.updateCriteria({
-                    center: [newLat, newLong],
-                    radius: newRadius/1000
-                });
-            }
         })
-
-        //}
-        /**********************/
-        /*  HELPER FUNCTIONS  */
-        /**********************/
-        /* Adds a marker for the inputted vehicle to the map */
-        function createVehicleMarker(vehicle, vehicleColor) {
-            var marker = new google.maps.Marker({
-                icon: "https://chart.googleapis.com/chart?chst=d_bubble_icon_text_small&chld=" + vehicle.vtype + "|bbT|" + vehicle.routeTag + "|" + vehicleColor + "|eee",
-                position: new google.maps.LatLng(vehicle.lat, vehicle.lon),
-                optimized: true,
-                map: map
-            });
-
-            return marker;
-        }
-
-        /* Returns a blue color code for outbound vehicles or a red color code for inbound vehicles */
-        function getVehicleColor(vehicle) {
-            return ((vehicle.dirTag && vehicle.dirTag.indexOf("OB") > -1) ? "50B1FF" : "FF6450");
-        }
-
-        /* Returns true if the two inputted coordinates are approximately equivalent */
-        function coordinatesAreEquivalent(coord1, coord2) {
-            return (Math.abs(coord1 - coord2) < 0.000001);
-        }
-
-        /* Animates the Marker class (based on https://stackoverflow.com/a/10906464) */
-        google.maps.Marker.prototype.animatedMoveTo = function(newLocation) {
-            var toLat = newLocation[0];
-            var toLng = newLocation[1];
-
-            var fromLat = this.getPosition().lat();
-            var fromLng = this.getPosition().lng();
-
-            if (!coordinatesAreEquivalent(fromLat, toLat) || !coordinatesAreEquivalent(fromLng, toLng)) {
-                var percent = 0;
-                var latDistance = toLat - fromLat;
-                var lngDistance = toLng - fromLng;
-                var interval = window.setInterval(function () {
-                    percent += 0.01;
-                    var curLat = fromLat + (percent * latDistance);
-                    var curLng = fromLng + (percent * lngDistance);
-                    var pos = new google.maps.LatLng(curLat, curLng);
-                    this.setPosition(pos);
-                    if (percent >= 1) {
-                        window.clearInterval(interval);
-                    }
-                }.bind(this), 50);
-            }
-        }
-
     }])
 
 

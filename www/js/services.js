@@ -3,7 +3,7 @@
  */
 angular.module('starter.services', [])
     .value('FIREBASE_REF','https://socialauthnik.firebaseio.com')
-    //.value('FIREBASE_ENTRY_POINT',{})
+
     .value('userSession',{})
     .value('USER',{})
 
@@ -80,6 +80,7 @@ angular.module('starter.services', [])
 
                 //$window.localStorage[key] = JSON.stringify(value,censor(value));
                 $window.localStorage[key] = stringify(value,null,2);
+                //console.log(value);
             },
             getObject: function(key) {
                 //console.log("get key/va"+key);
@@ -87,33 +88,4 @@ angular.module('starter.services', [])
             }
         }
     }])
-
-    .service('storeChoreService',['$localstorage', function($localstorage) {
-
-
-        var broadcastChoreEvent = function($rootScope) {
-            $rootScope.$broadcast('choreEvent');
-            //console.log('firing choreEvent');
-        };
-
-        var set = function(newObj) {
-            $localstorage.setObject('chores',newObj);
-            //broadcastChoreEvent;
-
-        }
-
-        var get = function(){
-            return $localstorage.getObject('chores');
-
-        }
-
-        return {
-            set: set,
-            get: get,
-            broadcastChoreEvent:broadcastChoreEvent
-        };
-
-    }])
-
-
 

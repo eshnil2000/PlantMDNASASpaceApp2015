@@ -1,0 +1,58 @@
+<ion-side-menus>
+
+  <ion-pane ion-side-menu-content>
+    <ion-nav-bar class="bar-stable nav-title-slide-ios7">
+      <ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i> Back</ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+  </ion-pane>
+
+  <ion-side-menu side="left">
+    <header class="bar bar-header bar-stable">
+      <h1 class="title">Menu</h1>
+    </header>
+    <ion-content class="has-header">
+
+      <ion-item ng-if="test.length == 0">
+        Press <i class="icon ion-ios7-plus-outline"></i> to add item
+      </ion-item>
+
+      <ion-list >
+        <!--ion-item ng-if="userSession.auth" nav-clear menu-close ng-click="loginShow()"-->
+        <ion-item  ng-if="loggedIn==0" nav-clear menu-close ng-click="loginShow()">
+          <i  class="ion-social-facebook "></i> Login
+        </ion-item>
+
+        <ion-item   ng-if="loggedIn==1" nav-clear menu-close ng-click="logout()">
+          <i  class="ion-social-facebook "></i> Logout
+        </ion-item>
+
+        <!--ion-item nav-clear menu-close href="#/app/chores"-->
+          <ion-item nav-clear menu-close ng-click="showChores()">
+
+          <i class="ion-android-reminder"></i>Chores
+        </ion-item>
+
+        <ion-item ng-click="showProfile()" nav-clear menu-close >
+          <i class="ion-android-user-menu"></i> Profile
+        </ion-item>
+
+        <ion-item ng-click="showUsers()" nav-clear menu-close >
+          <i class="ion-android-social-user"></i> Users
+        </ion-item>
+
+        <ion-item ng-click="showMap()" nav-clear menu-close >
+          <i class="ion-map"></i> Map
+        </ion-item>
+
+        <ion-item ng-click="showIntro()" nav-clear menu-close >
+          <i class="ion-help"></i> Intro
+        </ion-item>
+
+
+
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+
+</ion-side-menus>
