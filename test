@@ -1,0 +1,26 @@
+{ MonitoringLocationGeospatial: 
+   { CountryCode: 'US',
+     CountyCode: '109',
+     HorizontalAccuracyMeasure: { MeasureUnitCode: 'seconds', MeasureValue: '5' },
+     HorizontalCollectionMethodName: 'Interpolated from map',
+     HorizontalCoordinateReferenceSystemDatumName: 'NAD83',
+     LatitudeMeasure: '35.7008915',
+     LongitudeMeasure: '-97.1955884',
+     SourceMapScaleNumeric: '24000',
+     StateCode: '40',
+     VerticalAccuracyMeasure: { MeasureUnitCode: 'feet', MeasureValue: '5' },
+     VerticalCollectionMethodName: 'Interpolated from topographic map',
+     VerticalCoordinateReferenceSystemDatumName: 'NGVD29',
+     VerticalMeasure: { MeasureUnitCode: 'feet', MeasureValue: '1020' } },
+  MonitoringLocationIdentity: 
+   { HUCEightDigitCode: '11100303',
+     MonitoringLocationDescriptionText: 'NAWQA REGIONAL SAMPLING SHALLOW WELL',
+     MonitoringLocationIdentifier: 'USGS-354203097114301',
+     MonitoringLocationName: '14N-01E-09 DAD 1',
+     MonitoringLocationTypeName: 'Well' },
+  WellInformation: 
+   { AquiferName: 'Other aquifers',
+     ConstructionDateText: '1930',
+     FormationTypeText: 'Wellington Formation',
+     WellDepthMeasure: { MeasureUnitCode: 'ft', MeasureValue: '39' },
+     WellHoleDepthMeasure: { MeasureUnitCode: 'ft', MeasureValue: '39' } } }

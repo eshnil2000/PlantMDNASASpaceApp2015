@@ -29,6 +29,11 @@ angular.module('starter', ['ngAutocomplete','ngMap','angularGeoFire','ionic', 'f
   });
 })
 
+.config(['$compileProvider',
+  function ($compileProvider) {
+    $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|local|data):/);
+  }])
+
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
@@ -44,7 +49,7 @@ angular.module('starter', ['ngAutocomplete','ngMap','angularGeoFire','ionic', 'f
         views: {
           'menuContent' :{
             templateUrl: "templates/intro.html",
-            controller: 'IntroCtrl'
+            controller: 'introCtrl'
           }
         }
       })
@@ -97,6 +102,48 @@ angular.module('starter', ['ngAutocomplete','ngMap','angularGeoFire','ionic', 'f
           }
         }
       })
+
+      .state('app.share', {
+        url: "/share",
+        views: {
+          'menuContent' :{
+            templateUrl: "templates/share.html",
+            controller: 'share'
+          }
+        }
+      })
+
+      .state('app.chat', {
+        url: "/chat",
+        views: {
+          'menuContent' :{
+            templateUrl: "templates/chat.html",
+            controller: 'share'
+          }
+        }
+      })
+
+      .state('app.water', {
+        url: "/water",
+        views: {
+          'menuContent' :{
+            templateUrl: "templates/showWaterMap.html",
+            controller: 'waterMapCtrl'
+          }
+        }
+      })
+
+      .state('app.disease', {
+        url: "/disease",
+        views: {
+          'menuContent' :{
+            templateUrl: "templates/Chore.html",
+            controller: 'choreCtrl'
+          }
+        }
+      })
+
+
 
 
   ;

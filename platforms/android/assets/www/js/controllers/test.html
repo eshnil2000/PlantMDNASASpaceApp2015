@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+<div id="results"></div>
+
+<script>
+
+    var results = document.getElementById('results');
+
+    (function () {
+        var string='';
+        for ( var i = 0; i<100; i++ ) {
+            string=string+'['+getRandomArbitrary(37.0000000,37.770000)+','+getRandomArbitrary(-122.391799999,-122.2)+']'+',';
+            console.log(string);
+             }
+
+        results.innerHTML =string;
+
+        function getRandomArbitrary(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+
+    })();
+</script>
+
+</body>
+</html>

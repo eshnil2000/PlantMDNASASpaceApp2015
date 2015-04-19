@@ -1,0 +1,24 @@
+<ion-view title="Let's share some pics" >
+
+    <ion-header-bar>
+
+        <ion-nav-buttons side="left">
+            <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+        </ion-nav-buttons>
+
+        <ion-nav-buttons side="right" >
+            <!--i class="icon ion-ios7-plus-outline"></i-->
+            <button ng-click="showAddChangeDialog('add')"> Add</button>
+        </ion-nav-buttons>
+
+    </ion-header-bar>
+
+
+    <ion-content has-header="true" padding="true">
+        <!--ion-item  class="item-remove-animate item-avatar item-icon-right">
+            <img class="pano" id="pano" />
+        </ion-item-->
+        <browse-file></browse-file>
+        <chat-list></chat-list>
+    </ion-content>
+</ion-view>

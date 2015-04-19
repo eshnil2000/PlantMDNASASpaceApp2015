@@ -9,9 +9,9 @@
     </ion-nav-buttons>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=yes, width=device-width">
 
-    <ion-nav-buttons side="right" >
+    <ion-nav-buttons  side="right" >
         <!--i class="icon ion-ios7-plus-outline"></i-->
-        <button ng-click="showLocation()"> Add Location</button>
+        <button  class=" button-balanced" ng-show="loggedIn"  ng-click="saveLocation()"> Add Location</button>
     </ion-nav-buttons>
 
 
@@ -23,7 +23,7 @@
     </div>
 
     <input id="pac-input"   type="text"
-           placeholder="Enter a location" position="relative" ng-autocomplete>
+           placeholder="Enter a location" position="relative" ng-autocomplete ng-model="selectedPlace">
 
     <map position="relative" id="map-canvas" zoom="15" center={{center}} on-click="setCenter(event)"  on-zoom_changed="zoomChanged()" >
         <!--shape name="rectangle" editable="true" draggable="true" bounds="[[44.490,-78.649],[44.599,-78.443]]" on-bounds_changed="boundsChanged()"-->

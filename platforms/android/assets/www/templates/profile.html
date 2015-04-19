@@ -1,19 +1,13 @@
-<ion-view title="Profile">
+<ion-view title="PlantMD">
+
     <ion-header-bar>
 
-
-        <ion-nav-buttons side="left">
-            <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-        </ion-nav-buttons>
-
-        <ion-nav-buttons side="right" >
-
-            <button ng-click="showAddChangeDialog('add')"> Add</button>
-        </ion-nav-buttons>
-
-
+            <ion-nav-buttons side="left">
+                <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+            </ion-nav-buttons>
 
     </ion-header-bar>
+
 
     <ion-content has-header="true" padding="true">
         <h4 ng-model="userData.displayName"> {{userData.displayName}}</h4>
@@ -30,5 +24,5 @@
         </div>
 
     </ion-content>
-</ion-view>
+
 </ion-view>

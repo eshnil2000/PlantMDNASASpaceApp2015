@@ -16,7 +16,7 @@
 
 
                 <div class="item item-divider" ng-model="choreID"  name="choreID">
-                    ChoreID : {{choreID}}
+                    DiseaseID : {{choreID}}
                 </div>
 
                 <div>
@@ -26,11 +26,11 @@
                 <div>
                     <label class="item item-input item-select">
                         <div class="input-label">
-                            Lightsaber : {{choreName}}
+                            Severity : {{choreName}}
                         </div>
                         <select ng-model="choreName" ng-change="choreNameChanged(choreName)" name="choreName">
-                            <option>Blue</option>
-                            <option selected>Green</option>
+                            <option>Green</option>
+                            <option selected>Yellow</option>
                             <option>Red</option>
                         </select>
                     </label>

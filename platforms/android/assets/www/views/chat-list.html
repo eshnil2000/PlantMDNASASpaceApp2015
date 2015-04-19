@@ -1,0 +1,9 @@
+<div class="list">
+    <a class="item" href="#" ng-repeat="message in messages track by $index">
+        <h2>{{message.sender}}</h2>
+        <img class="item-remove-animate item-avatar item-icon-right" ng-src="{{message.image}}">
+        <!--ion-item  class="item-remove-animate item-avatar item-icon-right" >
+            <img ng-src="{{message.image}}">
+        </ion-item-->
+    </a>
+</div>
