@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Ionic App Base
 =====================
 
@@ -85,4 +86,15 @@ Warning: the nightly version is not stable.
 
 ## Issues
 Issues have been disabled on this repo, if you do find an issue or have a question consider posting it on the [Ionic Forum](http://forum.ionicframework.com/).  Or else if there is truly an error, follow our guidelines for [submitting an issue](http://ionicframework.com/contribute/#issues) to the main Ionic repository. On the other hand, pull requests are welcome here!
+=======
+# PlantMDNASASpaceApp2015
+check out the other open source/ libraries used:
+#SMS free sending library
+https://github.com/typpo/textbelt
+#geohashing
+https://github.com/firebase/geofire/
+#real time image sharing socket io
+https://github.com/htmlxprs/ionic-realtime-image-share
+
+>>>>>>> a4d970ca136807696dde3d118fbc90550e2f3bef
 
