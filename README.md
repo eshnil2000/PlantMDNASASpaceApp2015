@@ -1,5 +1,5 @@
 
-# PlantMD Source Code- Sacramento Area Winner
+# PlantMD Source Code- Sacramento Area Winner NASA SpaceApps 2015
 this repo contains an Android App build version as well as web app build version
 # NOTE: you have to get your own Firebase database accounts secret keys etc as pre-requisities
 
