@@ -1,4 +1,8 @@
 
+# PlantMD Source Code- Sacramento Area Winner
+this repo contains an Android App build version as well as web app build version
+# NOTE: you have to get your own Firebase database accounts secret keys etc as pre-requisities
+
 #Install IONIC, node pre-requisites
 # Get accounts on firebase
 $ sudo npm install -g ionic
